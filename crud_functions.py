@@ -12,10 +12,12 @@ def initiate_db():
         )
     ''')
 
-    #cursor.execute("INSERT INTO Products (title, description, price) VALUES (?, ?, ?)",("Product1", "Описание продукта 1", 100))
-    #cursor.execute("INSERT INTO Products (title, description, price) VALUES (?, ?, ?)", ("Product2", "Описание продукта 2", 200))
-    #cursor.execute("INSERT INTO Products (title, description, price) VALUES (?, ?, ?)", ("Product3", "Описание продукта 3", 300))
-    #cursor.execute("INSERT INTO Products (title, description, price) VALUES (?, ?, ?)",("Product4", "Описание продукта 4", 400))
+    cursor.execute('''
+    DELETE FROM Users
+    ''')
+    
+    for i in range(1, 5):
+        cursor.execute("INSERT INTO Products (title, description, price) VALUES (?, ?, ?)",(f"Product{1}", "Описание продукта 1", i * 100))
 
     cursor.execute('''
             CREATE TABLE IF NOT EXISTS Users(
